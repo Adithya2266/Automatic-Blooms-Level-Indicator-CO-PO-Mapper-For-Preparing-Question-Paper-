@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}Definitions{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-5 page-title">Understanding Bloom's Taxonomy, Course Outcomes, and Program Outcomes</h1>
+    
+    <!-- Bloom's Taxonomy Section -->
+    <section class="content-section">
+        <div class="section-icon">🎯</div>
+        <h2 class="section-title">What is Bloom's Taxonomy?</h2>
+        <p class="lead-text">
+            Bloom's Taxonomy is a hierarchical framework used to classify educational learning objectives 
+            into levels of complexity and specificity. It helps instructors design, assess, and categorize 
+            learning activities based on cognitive skills.
+        </p>
+        <p class="taxonomy-intro">The six levels of Bloom's Taxonomy (revised version) are:</p>
+        <div class="taxonomy-levels">
+            <div class="level-item">
+                <span class="level-number">1</span>
+                <strong>Remembering:</strong> Recalling facts and basic concepts.
+            </div>
+            <div class="level-item">
+                <span class="level-number">2</span>
+                <strong>Understanding:</strong> Explaining ideas or concepts.
+            </div>
+            <div class="level-item">
+                <span class="level-number">3</span>
+                <strong>Applying:</strong> Using information in new situations.
+            </div>
+            <div class="level-item">
+                <span class="level-number">4</span>
+                <strong>Analyzing:</strong> Breaking information into parts to explore relationships.
+            </div>
+            <div class="level-item">
+                <span class="level-number">5</span>
+                <strong>Evaluating:</strong> Justifying a decision or course of action.
+            </div>
+            <div class="level-item">
+                <span class="level-number">6</span>
+                <strong>Creating:</strong> Producing new or original work.
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Outcomes Section -->
+    <section class="content-section">
+        <div class="section-icon">📚</div>
+        <h2 class="section-title">What are Course Outcomes (COs)?</h2>
+        <p class="lead-text">
+            Course Outcomes (COs) are specific statements that define what a student is expected to 
+            achieve at the end of a course. COs are measurable and align with Program Outcomes (POs).
+        </p>
+        <p class="example-intro">Examples of Course Outcomes:</p>
+        <div class="example-box">
+            <div class="example-item">
+                "At the end of this course, students will be able to analyze sorting algorithms."
+            </div>
+            <div class="example-item">
+                "Students will design and implement database schemas."
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Outcomes Section -->
+    <section class="content-section">
+        <div class="section-icon">🎓</div>
+        <h2 class="section-title">What are Program Outcomes (POs)?</h2>
+        <p class="lead-text">
+            Program Outcomes (POs) are broad statements that describe the knowledge, skills, and attitudes 
+            students should have acquired by the time they graduate from a program. These are defined by 
+            national or institutional accreditation bodies and often align with industry requirements.
+        </p>
+        <p class="example-intro">Examples of Program Outcomes:</p>
+        <div class="example-box">
+            <div class="example-item">
+                "Ability to apply engineering principles to solve complex problems."
+            </div>
+            <div class="example-item">
+                "Demonstrate professional ethics and responsibility in practice."
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .page-title {
+        color: #2d3748;
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 3rem;
+        background: linear-gradient(120deg, #4299e1, #667eea);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .content-section {
+        background: white;
+        border-radius: 1rem;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: relative;
+        border-left: 5px solid #4299e1;
+    }
+
+    .section-icon {
+        font-size: 2rem;
+        position: absolute;
+        top: -1rem;
+        right: 2rem;
+        background: white;
+        padding: 0.5rem;
+        border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+        color: #2b6cb0;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    .lead-text {
+        color: #4a5568;
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .taxonomy-intro, .example-intro {
+        color: #2d3748;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .taxonomy-levels {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .level-item {
+        background: #f7fafc;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .level-number {
+        background: #4299e1;
+        color: white;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-weight: bold;
+    }
+
+    .example-box {
+        background: #f7fafc;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .example-item {
+        color: #4a5568;
+        font-style: italic;
+        margin-bottom: 1rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .example-item:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 1rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .content-section {
+            padding: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}

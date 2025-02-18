@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center">Course Outcomes</h2>
+
+<div class="filter-container text-center">
+    <form method="get" class="form-inline">
+        <label for="course" class="mr-2">Select Course:</label>
+        <select name="course" id="course" class="form-control" onchange="this.form.submit()">
+            <option value="">All Courses</option>
+            {% for course in courses %}
+                <option value="{{ course.id }}" {% if selected_course and selected_course.id == course.id %}selected{% endif %}>
+                    {{ course.course_name }}
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+
+<div class="table-responsive mt-3">
+    <table class="custom-table table-bordered">
+        <thead>
+            <tr>
+                {% if not selected_course %}<th>Course</th>{% endif %}
+                <th>Outcome Number</th>
+                <th>Description</th>
+                <th class="action-column">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for co in course_outcomes %}
+            <tr>
+                {% if not selected_course %}<td>{{ co.course_name.course_name }}</td>{% endif %}
+                <td>{{ co.co_number }}</td>
+                <td>{{ co.description }}</td>
+                <td class="action-column">
+                    <a href="{% url 'update_course_outcome' co.pk %}" class="btn btn-link" title="Edit">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{% url 'delete_course_outcome' co.pk %}" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="{% if selected_course %}3{% else %}4{% endif %}" class="text-center">No Course Outcomes found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

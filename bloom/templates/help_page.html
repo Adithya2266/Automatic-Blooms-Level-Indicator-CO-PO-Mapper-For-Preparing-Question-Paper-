@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="page-title">📖 Help Page</h2>
+    <div class="help-content">
+        <h4 class="section-title">🛠 How to Use the System</h4>
+        
+        <h5 class="subsection-title">1. Question Page</h5>
+        <p>The Question Page is designed to help faculty create detailed question papers efficiently. Here's how you can use it:</p>
+        <ul class="feature-list">
+            <li><strong>Select a Course:</strong> Use the dropdown menu to choose the course for the question paper.</li>
+            <li><strong>Enter Total Marks:</strong> Input the total marks for the entire question paper.</li>
+            <li><strong>Add Sections:</strong> Click the <strong>"Add Section"</strong> button to divide the paper into multiple sections.</li>
+            <li><strong>Enter Marks for Questions:</strong> Specify the marks allocated for each question in a section.</li>
+            <li><strong>Mandatory Questions:</strong> Use the checkbox to mark questions that are mandatory to attempt.</li>
+            <li><strong>Add Multiple Sections:</strong> Flexibly add or remove sections based on your requirements.</li>
+        </ul>
+
+        <hr class="divider">
+
+        <h5 class="subsection-title">2. Bloom's Levels Page</h5>
+        <p>The Bloom's Levels Page provides CRUD functionality for managing Bloom's taxonomy levels and verbs. Here's what you can do:</p>
+        <ul class="feature-list">
+            <li><strong>View Bloom's Levels:</strong> See a comprehensive list of all Bloom's taxonomy levels and their associated verbs.</li>
+            <li><strong>Add New Level:</strong> Click the <strong>"Add Bloom's Level"</strong> button to define a new level with verbs.</li>
+            <li><strong>Edit Existing Levels:</strong> Use the <span class="icon"><i class="fas fa-edit" style="color: #4299e1"></i></span> icon to update a Bloom's level or its verbs.</li>
+            <li><strong>Delete Levels:</strong> Use the <span class="icon"><i class="fas fa-trash-alt" style="color: #e53e3e"></i></span> icon to remove a level permanently.</li>
+        </ul>
+
+        <hr class="divider">
+
+        <h5 class="subsection-title">3. Course Outcomes Page</h5>
+        <p>The Course Outcomes Page allows faculty to manage course outcomes for each course:</p>
+        <ul class="feature-list">
+            <li><strong>View Course Outcomes:</strong> Displays all the outcomes related to every course in a structured table.</li>
+            <li><strong>Add Course Outcome:</strong> Select a course and add a specific outcome to it.</li>
+            <li><strong>Edit Course Outcomes:</strong> Click the <span class="icon"><i class="fas fa-edit" style="color: #4299e1"></i></span> icon to modify existing course outcomes.</li>
+            <li><strong>Delete Course Outcomes:</strong> Use the <span class="icon"><i class="fas fa-trash-alt" style="color: #e53e3e"></i></span> icon to delete an outcome.</li>
+        </ul>
+
+        <hr class="divider">
+
+        <h5 class="subsection-title">4. Program Outcomes Page</h5>
+        <p>The Program Outcomes Page manages program-level outcomes across courses:</p>
+        <ul class="feature-list">
+            <li><strong>View Program Outcomes:</strong> Displays all program outcomes for all courses.</li>
+            <li><strong>Add Program Outcome:</strong> Select a course and define a program outcome for it.</li>
+            <li><strong>Edit Program Outcomes:</strong> Use the <span class="icon"><i class="fas fa-edit" style="color: #4299e1"></i></span> icon to update existing program outcomes.</li>
+            <li><strong>Delete Program Outcomes:</strong> Use the <span class="icon"><i class="fas fa-trash-alt" style="color: #e53e3e"></i></span> icon to remove a program outcome.</li>
+        </ul>
+
+        <div class="support-section">
+            <h4 class="support-title">📧 Need Assistance?</h4>
+            <p>If you face any issues or have questions, feel free to contact our support team at <a href="mailto:support@example.com">support@example.com</a>.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .help-content {
+        background-color: white;
+        border-radius: 1rem;
+        padding: 2.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        line-height: 1.6;
+        color: #2d3748;
+    }
+
+    .page-title {
+        color: #2b6cb0;
+        text-align: center;
+        font-size: 2.25rem;
+        margin-bottom: 2rem;
+        font-weight: 700;
+    }
+
+    .section-title {
+        color: #2c5282;
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .subsection-title {
+        color: #38a169;
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .feature-list {
+        padding-left: 1.5rem;
+        margin-bottom: 1.5rem;
+        list-style-type: none;
+    }
+
+    .feature-list li {
+        margin-bottom: 0.75rem;
+        position: relative;
+    }
+
+    .feature-list li::before {
+        content: "•";
+        color: #4299e1;
+        font-weight: bold;
+        position: absolute;
+        left: -1rem;
+    }
+
+    .divider {
+        border: none;
+        border-top: 2px solid #e2e8f0;
+        margin: 2rem 0;
+    }
+
+    .support-section {
+        background-color: #ebf8ff;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        margin-top: 2rem;
+    }
+
+    .support-title {
+        color: #2b6cb0;
+        margin-bottom: 1rem;
+    }
+
+    .icon {
+        display: inline-block;
+        width: 1.5rem;
+        text-align: center;
+    }
+
+    a {
+        color: #4299e1;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: #2b6cb0;
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}

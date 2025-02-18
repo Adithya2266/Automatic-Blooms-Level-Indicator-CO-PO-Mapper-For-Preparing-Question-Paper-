@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center">Program Outcomes</h2>
+
+<!-- Course Selection Dropdown -->
+<div class="form-group text-center">
+    <form method="get" id="course-filter-form" class="d-inline-block">
+        <label for="course">Select Course:</label>
+        <select id="course" name="course" class="form-control d-inline-block w-auto">
+            <option value="">All Courses</option>
+            {% for course in courses %}
+            <option value="{{ course.id }}" {% if course.id|stringformat:"s" == selected_course_id %}selected{% endif %}>
+                {{ course.course_name }}
+            </option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+
+<div class="table-responsive">
+    <table class="custom-table table-bordered">
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>PO Number</th>
+                <th>Description</th>
+                <th class="action-column">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for po in program_outcomes %}
+            <tr>
+                <td>{{ po.course.course_name }}</td>
+                <td>{{ po.po_number }}</td>
+                <td>{{ po.description }}</td>
+                <td class="action-column">
+                    <a href="{% url 'update_program_outcome' po.pk %}" class="btn btn-link" title="Edit">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{% url 'delete_program_outcome' po.pk %}" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="text-center">No Program Outcomes found for the selected course.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="text-center mt-4">
+    <a href="{% url 'add_program_outcome' %}" class="btn btn-success">
+        <i class="fas fa-plus-circle"></i> Add New Program Outcome
+    </a>
+</div>
+
+<!-- JavaScript to auto-submit form on dropdown change -->
+<script>
+    document.getElementById('course').addEventListener('change', function() {
+        document.getElementById('course-filter-form').submit();
+    });
+</script>
+{% endblock %}
