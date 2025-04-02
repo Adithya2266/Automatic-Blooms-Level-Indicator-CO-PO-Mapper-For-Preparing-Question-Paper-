@@ -99,10 +99,6 @@ def add_course_outcome(request):
         form = CourseOutcomeForm()
     return render(request, 'add_course_outcome.html', {'form': form})
 
-# Read (list) CourseOutcomes
-# def list_course_outcomes(request):
-#     course_outcomes = CourseOutcome.objects.all()
-#     return render(request, 'course_outcome_list.html', {'course_outcomes': course_outcomes})
 
 from django.shortcuts import render, get_object_or_404
 from .models import Course, CourseOutcome
@@ -159,10 +155,6 @@ def add_program_outcome(request):
         form = ProgramOutcomeForm()
     return render(request, 'add_program_outcome.html', {'form': form})
 
-# Read (list) ProgramOutcomes
-# def list_program_outcomes(request):
-#     program_outcomes = ProgramOutcome.objects.all()
-#     return render(request, 'program_outcome_list.html', {'program_outcomes': program_outcomes})
 
 def list_program_outcomes(request):
     selected_course_id = request.GET.get('course')
@@ -204,74 +196,6 @@ def welcome_view(request):
 def home(request):
     courses = Course.objects.all()  
     return render(request, 'home.html', {'courses': courses})
-
-# model = SentenceTransformer('all-MiniLM-L6-v2')
-
-# def map_blooms_level(question):
-#     bloom_levels = BloomLevel.objects.all()
-#     for bloom_level in bloom_levels:
-#         keywords = bloom_level.get_keywords()
-#         for keyword in keywords:
-#             if keyword in question.lower():
-#                 return bloom_level.level_name
-#     return "unknown"
-
-# def map_outcomes(question, course):
-#     question_embedding = model.encode(question, convert_to_tensor=True)
-    
-#     # Retrieve course-specific COs and POs from the database
-#     course_outcomes = CourseOutcome.objects.filter(course=course)
-#     program_outcomes = ProgramOutcome.objects.filter(course=course)
-    
-#     # Convert descriptions to lists for encoding
-#     co_descriptions = [co.description for co in course_outcomes]
-#     po_descriptions = [po.description for po in program_outcomes]
-    
-#     # Encode descriptions for similarity matching
-#     co_embeddings = model.encode(co_descriptions, convert_to_tensor=True)
-#     po_embeddings = model.encode(po_descriptions, convert_to_tensor=True)
-    
-#     # Calculate similarity scores
-#     co_similarity = util.pytorch_cos_sim(question_embedding, co_embeddings).numpy()[0]
-#     po_similarity = util.pytorch_cos_sim(question_embedding, po_embeddings).numpy()[0]
-    
-#     # Find the best matching indices and convert them to Python int
-#     best_co_index = int(np.argmax(co_similarity))  # Convert int64 to int
-#     best_po_index = int(np.argmax(po_similarity))  # Convert int64 to int
-    
-#     # Retrieve the best-matching CO and PO based on indices
-#     best_co = course_outcomes[best_co_index]
-#     best_po = program_outcomes[best_po_index]
-    
-#     return best_co, best_po
-
-
-# def question_view(request):
-#     if request.method == 'POST':
-#         course_id = request.POST.get('course')
-#         course = Course.objects.get(id=course_id)
-#         questions = request.POST.getlist('question')  # Retrieve multiple questions
-
-#         # Prepare a results list to store each question's Bloom's level, CO, and PO mappings
-#         results = []
-#         for question in questions:
-#             blooms_level = map_blooms_level(question)
-#             best_co, best_po = map_outcomes(question, course)
-
-#             results.append({
-#                 'question': question,
-#                 'course': course.course_name,
-#                 'blooms_level': blooms_level,
-#                 'co': best_co.description,
-#                 'po': best_po.description,
-#             })
-
-#         # Pass results to the output template
-#         return render(request, 'question_output.html', {'results': results})
-
-#     # Retrieve available courses for selection
-#     courses = Course.objects.all()
-#     return render(request, 'home.html', {'courses': courses})
 
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
@@ -338,36 +262,6 @@ def calculate_blooms_level_distribution(questions):
         level: (count / total_questions) * 100 for level, count in bloom_count.items()
     }
     return bloom_percentage
-
-# def question_view(request):
-#     if request.method == 'POST':
-#         course_id = request.POST.get('course')
-#         course = Course.objects.get(id=course_id)
-#         questions = request.POST.getlist('question')  # Retrieve multiple questions
-
-#         # Calculate the Bloom's level distribution for all questions
-#         bloom_distribution = calculate_blooms_level_distribution(questions)
-
-#         # Prepare a results list to store each question's Bloom's level, CO, and PO mappings
-#         results = []
-#         for question in questions:
-#             blooms_level = map_blooms_level(question)
-#             best_co, best_po = map_outcomes(question, course)
-
-#             results.append({
-#                 'question': question,
-#                 'course': course.course_name,
-#                 'blooms_level': blooms_level,
-#                 'co': best_co.description,
-#                 'po': best_po.description,
-#             })
-
-#         # Pass results and overall Bloom's level summary to the template
-#         return render(request, 'question_output.html', {'results': results, 'bloom_summary': bloom_distribution})
-
-#     # Retrieve available courses for selection
-#     courses = Course.objects.all()
-#     return render(request, 'home.html', {'courses': courses})
 
 def question_view(request):
     if request.method == 'POST':
